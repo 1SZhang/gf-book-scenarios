@@ -31,9 +31,12 @@ public class Piano extends World
     public void act()
     {
         //Every second say hello to the next person in the list
-        if(frames % 60==0)
+        
+        // Use an bolean AND to check both condition
+        // The showText statement only runs when BOTH condition are true
+        if((frames % 60==0) && (frames / 60 < 10))
         {
-            if (frames / 60 < 10)
+            
             showText("Hello" + studentNames[frames / 60 ], 400, 170);
 
         }
