@@ -14,13 +14,24 @@ public class Key extends Actor
      */
     //Tharks the piano key is down or not
     private boolean isDown;
-
+    
+    // Trak what key is beeing played and what sound file to play.
+    // (isDown is a premitive data type - show in red , type is lowercase)
+    private String key;
+    private String sound;
+    
+    
+    
     /**
      * Creat new key
      */
-    public Key()
+    public Key(String keyName, String soundFile)
     {
         isDown = false;
+        //Initiallize the key and sound instance varivles
+        key = keyName;
+        sound = soundFile;
+        
     }
 
     /**
@@ -29,7 +40,7 @@ public class Key extends Actor
      */
     public void act() 
     {
-        if( isDown == false && Greenfoot.isKeyDown("g"))
+        if( isDown == false && Greenfoot.isKeyDown(key))
         {
             setImage("white-key-down.png");
             isDown = true;
@@ -37,7 +48,7 @@ public class Key extends Actor
             
         }    
 
-        if (isDown == true && Greenfoot.isKeyDown("g") == false)
+        if (isDown == true && Greenfoot.isKeyDown(key) == false)
         {
 
             setImage("white-key.png");
@@ -53,7 +64,7 @@ public class Key extends Actor
 
     {
 
-        Greenfoot.playSound("3a.wav");
+        Greenfoot.playSound(sound +".wav");
     }
 
 }

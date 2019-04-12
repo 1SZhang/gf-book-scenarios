@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Key
 comment0.text=\n\ Write\ a\ description\ of\ class\ Key\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=Key()
+comment1.params=keyName\ soundFile
+comment1.target=Key(java.lang.String,\ java.lang.String)
 comment1.text=\n\ Creat\ new\ key\n
 comment2.params=
 comment2.target=void\ act()
