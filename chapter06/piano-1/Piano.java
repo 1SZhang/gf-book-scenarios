@@ -14,6 +14,11 @@ public class Piano extends World
     int frames;
     // Object data type .....Square braket [] indecate an array(a list)
     String[] studentNames = {"Sarah", "Chelsea","Jack","Maxwell","Gavin","Minah","Bradon","Jeewoo","Peter","Justy"};
+    // Trac the white key and note
+    String[] whiteKey = {"a","s","d","f","g","h","j","K","l",";","'","//"};
+    String[] whiteNte = {"3c","3d","3e","3f","3g","3a","3b","4c","4d","4e","4f","4g"};
+    
+    
     /**
      * Make the piano.
      */
@@ -29,11 +34,8 @@ public class Piano extends World
      */
 
     public void act()
-    {
-        //Every second say hello to the next person in the list
-        
-        // Use an bolean AND to check both condition
-        // The showText statement only runs when BOTH condition are true
+{
+        // This blovk of code runce onece per second 
         if((frames % 60==0) && (frames / 60 < 10))
         {
             
