@@ -15,8 +15,8 @@ public class Piano extends World
     // Object data type .....Square braket [] indecate an array(a list)
     String[] studentNames = {"Sarah", "Chelsea","Jack","Maxwell","Gavin","Minah","Bradon","Jeewoo","Peter","Justy"};
     // Trac the white key and note
-    String[] whiteKey = {"a","s","d","f","g","h","j","K","l",";","'","//"};
-    String[] whiteNte = {"3c","3d","3e","3f","3g","3a","3b","4c","4d","4e","4f","4g"};
+    String[] whiteKeys = {"a","s","d","f","g","h","j","K","l",";","'","//"};
+    String[] whiteNotes = {"3c","3d","3e","3f","3g","3a","3b","4c","4d","4e","4f","4g"};
     
     
     /**
@@ -38,9 +38,18 @@ public class Piano extends World
         // This blovk of code runce onece per second untail the end 
         //whiteKey array 
         //Note:whiteKey . length automatic lyy returns thcorrec number.
-        if((frames % 60==0) && (frames / 60 < whiteKey.length))
+        int position = frames /60;
+        if((frames % 60==0) && (frames / 60 < whiteKeys.length))
         {
+            // 
             
+            Key anotherKey = new Key(whiteKeys[position],whiteNotes[position]);
+            
+            // object jorizontal position      vertical position
+            addObject(anotherKey,54 + position * 63,140);
+            
+            // only show tex when we are inbound of the srrsy
+            showText("Array index is:" + frames / 60, 400, 250);
             //showText("Hello" + studentNames[frames / 60 ], 400, 170);
 
         }
