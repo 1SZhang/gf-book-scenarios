@@ -35,8 +35,10 @@ public class Piano extends World
 
     public void act()
 {
-        // This blovk of code runce onece per second 
-        if((frames % 60==0) && (frames / 60 < 10))
+        // This blovk of code runce onece per second untail the end 
+        //whiteKey array 
+        //Note:whiteKey . length automatic lyy returns thcorrec number.
+        if((frames % 60==0) && (frames / 60 < whiteKey.length))
         {
             
             //showText("Hello" + studentNames[frames / 60 ], 400, 170);
