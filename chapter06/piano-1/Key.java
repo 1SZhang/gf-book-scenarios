@@ -8,63 +8,101 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Key extends Actor
 {
-
     /**
-     * Instence varible
+     * Instance variables / objects
+     * (can be used by any method in this class)
      */
-    //Tharks the piano key is down or not
     private boolean isDown;
     
-    // Trak what key is beeing played and what sound file to play.
-    // (isDown is a premitive data type - show in red , type is lowercase)
+    // Store what keyboard key to respond to
     private String key;
+    // Store what sound file to play when pressed
     private String sound;
     
-    
+    // Tracks whether this instance of the Key class is a white key
+    private boolean isKeyWhite;
     
     /**
-     * Creat new key
+     * Create a new key.
      */
-    public Key(String keyName, String soundFile)
+    public Key(String keyName, String soundFile, boolean keyWhite)
     {
+        // Key object begins life in the "up" position
         isDown = false;
-        //Initiallize the key and sound instance varivles
+        
+        // Initialize key and sound instance variables
         key = keyName;
         sound = soundFile;
         
-    }
-
-    /**
-     * Act - do whatever the Key wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        if( isDown == false && Greenfoot.isKeyDown(key))
+        // Set what type of key this is instance is
+        isKeyWhite = keyWhite;
+        
+        // By default the piano key is white; when black, change the starting
+        // image
+        if (isKeyWhite == false)
         {
-            setImage("white-key-down.png");
-            isDown = true;
-            play();
-            
-        }    
-
-        if (isDown == true && Greenfoot.isKeyDown(key) == false)
-        {
-
-            setImage("white-key.png");
-            isDown = false;
-
+            setImage("black-key.png");
         }
     }
 
     /**
-     * Play the note of this key
+     * Do the action for this key.
+     */
+    public void act()
+    {
+        // When the piano key is not down, and the keyboard key was just pressed
+        if ( isDown == false && Greenfoot.isKeyDown(key) == true)
+        {
+            // Make the piano key appear to be down and play the sound
+            keyDown();
+            play();
+            isDown = true;
+        }
+        
+        // When the piano key is down, and the keyboard key was just released
+        if ( isDown == true && Greenfoot.isKeyDown(key) == false )
+        {
+            // Make the piano key appear to be up
+            keyUp();
+            isDown = false;
+        }
+    }
+    
+    /**
+     * Play the note of this key.
      */
     public void play()
-
     {
-
-        Greenfoot.playSound(sound +".wav");
+        Greenfoot.playSound(sound + ".wav");
     }
-
+    
+    /**
+     * Make the piano key appear to be down.
+     */
+    private void keyDown()
+    {
+        if (isKeyWhite == true)
+        {
+            setImage("white-key-down.png");
+        }
+        else
+        {
+            setImage("black-key-down.png");
+        }
+    }
+    
+    /**
+     * Make the piano key appear to be up.
+     */
+    private void keyUp()
+    {
+        if (isKeyWhite == true)
+        {
+            setImage("white-key.png");
+        }
+        else
+        {
+            setImage("black-key.png");
+        }
+    }
 }
